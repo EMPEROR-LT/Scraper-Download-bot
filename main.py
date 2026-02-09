@@ -2,6 +2,7 @@ import asyncio
 import logging
 import os
 from aiohttp import web
+from dotenv import load_dotenv
 from bot.bot import MovieBot
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
@@ -21,6 +22,7 @@ async def start_web_server():
     logger.info(f"Health check server started on port {port}")
 
 async def main():
+    load_dotenv()
     # Start health check server for Render compatibility
     try:
         await start_web_server()
